@@ -1,18 +1,19 @@
 // Copyright (c) 2017, 2021, Oracle and/or its affiliates. All rights reserved.
 // Licensed under the Mozilla Public License v2.0
 
-package marketplace
+package oci
 
 import (
 	"context"
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	oci_marketplace "github.com/oracle/oci-go-sdk/v55/marketplace"
-
-	"github.com/terraform-providers/terraform-provider-oci/internal/client"
-	"github.com/terraform-providers/terraform-provider-oci/internal/tfresource"
+	oci_marketplace "github.com/oracle/oci-go-sdk/v54/marketplace"
 )
+
+func init() {
+	RegisterDatasource("oci_marketplace_listing_package", MarketplaceListingPackageDataSource())
+}
 
 func MarketplaceListingPackageDataSource() *schema.Resource {
 	return &schema.Resource{
@@ -199,9 +200,9 @@ func MarketplaceListingPackageDataSource() *schema.Resource {
 func readSingularMarketplaceListingPackage(d *schema.ResourceData, m interface{}) error {
 	sync := &MarketplaceListingPackageDataSourceCrud{}
 	sync.D = d
-	sync.Client = m.(*client.OracleClients).MarketplaceClient()
+	sync.Client = m.(*OracleClients).marketplaceClient()
 
-	return tfresource.ReadResource(sync)
+	return ReadResource(sync)
 }
 
 type MarketplaceListingPackageDataSourceCrud struct {
@@ -232,7 +233,7 @@ func (s *MarketplaceListingPackageDataSourceCrud) Get() error {
 		request.PackageVersion = &tmp
 	}
 
-	request.RequestMetadata.RetryPolicy = tfresource.GetRetryPolicy(false, "marketplace")
+	request.RequestMetadata.RetryPolicy = GetRetryPolicy(false, "marketplace")
 
 	response, err := s.Client.GetPackage(context.Background(), request)
 	if err != nil {
@@ -248,7 +249,7 @@ func (s *MarketplaceListingPackageDataSourceCrud) SetData() error {
 		return nil
 	}
 
-	s.D.SetId(tfresource.GenerateDataSourceHashID("MarketplaceListingPackageDataSource-", MarketplaceListingPackageDataSource(), s.D))
+	s.D.SetId(GenerateDataSourceHashID("MarketplaceListingPackageDataSource-", MarketplaceListingPackageDataSource(), s.D))
 	switch v := (*s.Res).(type) {
 	case oci_marketplace.ImageListingPackage:
 

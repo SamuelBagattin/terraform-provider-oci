@@ -1,27 +1,3 @@
-## 4.60.0 (January 19, 2022)
-
-### Added
-- Autonomous Data Guard v2-Observer Support
-- Support for Visual Builder Runtime
-- Support for container engine boot volume encryption
-- Support for - OCI - Data Labeling Servic
-- Support For - Cross Region Volume Group Replication
-- Support Scale Storage separately for DATA and RECO for VMDB
-- Support for ADBS refreshable clone reconnect
-- Support For - Standard Tags
-- Support for allow customer to choose Dataguard type
-- Support for - DevOps Project Service - fixed defined tags assertion test case fix
-
-## 4.59.0 (January 12, 2022)
-
-### Added
-- Support for allow customer to choose Dataguard type
-- Support For - Standard Tags
-- Support for - DevOps Project Service - fixed defined tags assertion test case fix
-- Support for BDS - Object Store Integration
-- Support for IPv6 support on Network Load Balancer
-- Support for NLB Support Multiple Protocol on Same Listener
-
 ## 4.58.0 (January 05, 2022)
 
 ### Bug Fix
